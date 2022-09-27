@@ -1,0 +1,39 @@
+ <h1 mat-dialog-title>{{dialogTitle}}</h1>
+ <div mat-dialog-content>
+   <form id="orderForm" [formGroup]="orderForm">
+    <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input (keypress)="keyPressAlphaNumeric($event)" formControlName="name" matInput placeholder="Enter your Name">
+        <mat-error *ngIf="formError('name', 'maxlength')">Name must not exceed 50 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <input formControlName="state" matInput placeholder="Enter the State">
+        <mat-error *ngIf="formError('state', 'maxlength')">State must not exceed 50 characters</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Zip</mat-label>
+        <input (keypress)="keyPress($event)" formControlName="zip" matInput placeholder="Enter the Zip">
+        <mat-error *ngIf="formError('zip', 'pattern') || formError('zip', 'maxlength') ||formError('zip', 'minlength')" >
+            Enter a valid 5 or 9 digit Zip Code
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Amount</mat-label>
+        <input (keypress)="keyPressNumbersDecimal($event)" matInput type="number" formControlName="amount" class="example-right-align" placeholder="0">
+        <span matPrefix>$&nbsp;</span>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Quantity</mat-label>
+        <input (keypress)="keyPress($event)" formControlName="qty" matInput placeholder="Enter the Quantity">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Item Code</mat-label>
+        <input (keypress)="keyPressAlphaNumeric($event)" formControlName="item" matInput placeholder="Enter the Code">
+    </mat-form-field>
+   </form>
+ </div>
+<div mat-dialog-action [align]="'end'">
+<button mat-raised-button color="warn" mat-dialog-close>Close</button>
+<button style="margin-left:8px" mat-raised-button color="primary" (click)="saveOrder()">{{actionBtn}}</button>
+</div>

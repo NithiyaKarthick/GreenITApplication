@@ -1,0 +1,16 @@
+{
+    "require-dev": {
+        "codeception/codeception": "^5.0",
+        "codeception/module-phpbrowser": "*",
+        "codeception/module-asserts": "^3.0",
+        "codeception/module-rest": "^3.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "Server/"
+        }
+    },
+    "require": {
+        "monolog/monolog": "^2.8"
+    }
+}
