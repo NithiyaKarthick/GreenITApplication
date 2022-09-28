@@ -168,7 +168,7 @@ class OrderController extends Controller implements OrderInterface {
         }else{
             $json = file_get_contents('php://input');
             $data = json_decode($json, true);
-            $validate = $this->validate($data['data']);
+            $validate = $this->ValidateInputData($data['data']);
             if(is_array($validate)){
                 $this->setCode(400);
                 $this->setData($validate);
